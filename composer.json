@@ -1,0 +1,45 @@
+{
+    "name": "nunomaduro/alpine-day-schedule",
+    "description": "Get the Alpine Day 2021 Schedule from the terminal.",
+    "keywords": ["framework", "laravel", "laravel zero", "console", "cli", "alpine", "day"],
+    "homepage": "https://laravel-zero.com",
+    "type": "project",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/nunomaduro/alpine-day-schedule/issues",
+        "source": "https://github.com/nunomaduro/alpine-day-schedule"
+    },
+    "authors": [
+        {
+            "name": "Nuno Maduro",
+            "email": "enunomaduro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "laravel-zero/framework": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.4"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "bin": ["builds/alpine-day-schedule"]
+}
