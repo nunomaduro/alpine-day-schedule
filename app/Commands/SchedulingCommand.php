@@ -16,7 +16,7 @@ class SchedulingCommand extends Command
     const BREAK_LENGTH_MINUTES = 20;
     const TALK_LENGTH_MINUTES = 60;
     const BREAK_SLOT_NAME = 'Break';
-    const EXIT_SLOT_NAME = 'Exit';
+    const EXIT_SLOT_NAME = 'Closing Remarks & No Plans To Merge After Party';
 
     /**
      * The signature of the command.
@@ -38,11 +38,19 @@ class SchedulingCommand extends Command
      * @var array
      */
     protected $scheduling = [
-        '10:00' => '"The State Of Alpine" by CALEB PORZIO',
-        '11:00' => '"Tips for real-world AlpineJS" by HUGO DI FRANCESCO',
-        '12:00' => self::BREAK_SLOT_NAME,
-        '12:20' => '"foo" by BAR',
-        '19:00' => self::EXIT_SLOT_NAME,
+        '09:00' => 'Opening Remarks',
+        '09:10' => 'The State Of Alpine <fg=#6C7280>by CALEB PORZIO</>',
+        '10:00' => 'Tips for real-world AlpineJS <fg=#6C7280>by HUGO DI FRANCESCO</>',
+        '10:20' => 'Building a Better Modal <fg=#6C7280>by AUSTEN CAMERON</>',
+        '10:40' => 'Micro Interactions using AlpineJS <fg=#6C7280>by SHRUTI BALASA</>',
+        '11:00' => self::BREAK_SLOT_NAME,
+        '11:20' => 'How to keep your tech stack simple... <fg=#6C7280>by JUSTIN JACKSON & JON BUDA</>',
+        '11:40' => 'How To Carve A Spoon (Literally) <fg=#6C7280>by JESSE SCHUTT</>',
+        '12:00' => 'From Vue to Alpine: How & Why <fg=#6C7280>by MATT STAUFFER</>',
+        '12:20' => self::BREAK_SLOT_NAME,
+        '12:30' => 'Live Pairing Session: Building Alpine V3 From Scratch <fg=#6C7280>by ADAM WATHAN</>',
+        '13:15' => 'The Future Of Alpine <fg=#6C7280>by CALEB PORZIO</>',
+        '15:00' => 'Closing Remarks & No Plans To Merge After Party',
     ];
 
     /**
@@ -55,13 +63,17 @@ class SchedulingCommand extends Command
         $userTimeZone = $this->getTimeZone();
 
         $this->line('');
-        $this->line("    <options=bold,reverse;fg=magenta> ALPINE DAY 2021 </>");
+        $this->line("    <options=bold,reverse;fg=cyan> ALPINE DAY 2021 </>");
         $this->line('');
 
         $this->line('    Your timezone: ' . $userTimeZone . '.');
 
         $startsAt = '2021-06-10 10:00';
         $endsAt = '2021-06-10 19:00';
+
+        $daysLeft = Carbon::parse($startsAt, 'America/New_York')
+                ->setTimezone($userTimeZone)
+                ->diffInDays(now(), false);
 
         $hoursLeft = Carbon::parse($startsAt, 'America/New_York')
                 ->setTimezone($userTimeZone)
@@ -71,7 +83,10 @@ class SchedulingCommand extends Command
                 ->setTimezone($userTimeZone)
                 ->diffInMinutes(now(), false);
 
-        if ($hoursLeft < 0) {
+        if ($daysLeft < 0) {
+            $daysLeft = abs($daysLeft);
+            $this->line("    Event status : Starts in $daysLeft days.");
+        } elseif ($hoursLeft < 0) {
             $hoursLeft = abs($hoursLeft);
             $this->line("    Event status : Starts in $hoursLeft hours.");
         } elseif ($minutesLeft < 0) {
@@ -97,7 +112,7 @@ class SchedulingCommand extends Command
                 $showedHappeningNowOnce = true;
             }
 
-            $this->line("    <options={$lineOptions}>{$dateTime->calendar()}</> - $talk");
+            $this->line("    <options={$lineOptions}>{$dateTime->format('h:i A')}</> - $talk");
         });
 
         $this->line('');
