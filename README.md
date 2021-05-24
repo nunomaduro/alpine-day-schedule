@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/nunomaduro/alpine-day-schedule/master/art/readme.png" width="882" alt="Alpine Day Schedule Preview">
 </p>
 
-**Alpine Day Schedule** a command-line tool that gives you the Alpine Day 2021 schedule in your timezone.
+**Alpine Day Schedule** a command-line tool that gives you the **[Alpine Day 2021](https://alpineday.com/)** schedule in your timezone.
 
 ## 🚀 Quick start
 
