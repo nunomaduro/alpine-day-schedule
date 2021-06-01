@@ -38,8 +38,8 @@ class SchedulingCommand extends Command
      * @var array
      */
     protected $scheduling = [
-        '09:00' => 'Opening Remarks',
-        '09:10' => 'The State Of Alpine <fg=#6C7280>by CALEB PORZIO</>',
+        '09:30' => 'Opening Remarks',
+        '09:40' => 'The State Of Alpine <fg=#6C7280>by CALEB PORZIO</>',
         '10:00' => 'Tips for real-world AlpineJS <fg=#6C7280>by HUGO DI FRANCESCO</>',
         '10:20' => 'Building a Better Modal <fg=#6C7280>by AUSTEN CAMERON</>',
         '10:40' => 'Micro Interactions using AlpineJS <fg=#6C7280>by SHRUTI BALASA</>',
