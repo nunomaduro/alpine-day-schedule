@@ -2,8 +2,6 @@
     "name": "nunomaduro/alpine-day-schedule",
     "description": "Get the Alpine Day 2021 Schedule from the terminal.",
     "keywords": ["framework", "laravel", "laravel zero", "console", "cli", "alpine", "day"],
-    "homepage": "https://laravel-zero.com",
-    "type": "project",
     "license": "MIT",
     "support": {
         "issues": "https://github.com/nunomaduro/alpine-day-schedule/issues",
